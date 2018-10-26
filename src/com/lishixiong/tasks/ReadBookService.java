@@ -10,13 +10,13 @@ import static com.lishixiong.Utils.IOUtils.getScanner;
 
 /**
  * @author lishixiong
- * @since 2018/10/26 14:03
+ * @since 2018/10/26 13:43
  * Singularity Sky Technologies Limited.
  */
-public class Library implements Runnable {
+public class ReadBookService implements Runnable {
   private ScheduledExecutorService executors;
 
-  public Library(ScheduledExecutorService scheduledExecutorService) {
+  public ReadBookService(ScheduledExecutorService scheduledExecutorService) {
     this.executors = scheduledExecutorService;
   }
 
@@ -25,24 +25,23 @@ public class Library implements Runnable {
     try {
       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM:SS");
       simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT08:00"));
-      println(MessageFormat.format("\n~~~图书馆管理系统，欢迎来上班{0}(按0退出)~~~\n",
+      println(MessageFormat.format("\n====开始无脑看书模式{0}(按q退出，任意继续)====\n",
           simpleDateFormat.format(new Date())));
-      println("========1、增加书籍========\n" +
-          "========2、调整书籍========\n" +
-          "========3、查看书籍========\n" +
-          "========4、删除书籍\n");
+      println("======== 1、选择书籍 ========\n" +
+          "======== 2、还   书 ========\n" +
+          "======== 3、选择书架 ========\n");
       if ("q".equals(getScanner().nextLine())) {
         executors.shutdown();
         return;
       }
 
+
     } catch (Throwable t) {
 
     }
+
   }
 
   private void println(String format) {
   }
-
-
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2018/10/26 14:38
  * Singularity Sky Technologies Limited.
  */
-public class BooksShelf {
+public class BooksUtils {
   private static List<Book> books = new ArrayList<>();
 
   public static void get(int index) {

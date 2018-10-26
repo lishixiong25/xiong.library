@@ -1,7 +1,7 @@
 package com.lishixiong;
 
-import com.lishixiong.tasks.Library;
-import com.lishixiong.tasks.ReadBook;
+import com.lishixiong.tasks.LibraryService;
+import com.lishixiong.tasks.ReadBookService;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -53,7 +53,7 @@ public class Main {
 
   private static void launghReaderBookUtilsTerminated() {
     ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-    scheduledExecutorService.scheduleWithFixedDelay(new ReadBook(scheduledExecutorService),1,1,TimeUnit.MILLISECONDS);
+    scheduledExecutorService.scheduleWithFixedDelay(new ReadBookService(scheduledExecutorService),1,1,TimeUnit.MILLISECONDS);
 
     for(; ; ){
       if(scheduledExecutorService.isTerminated()){
@@ -67,7 +67,7 @@ public class Main {
 
   private static void launghCalculatorUtilsTerminated() {
     ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-    scheduledExecutorService.scheduleWithFixedDelay(new Library(scheduledExecutorService), 1, 1, TimeUnit.MILLISECONDS);
+    scheduledExecutorService.scheduleWithFixedDelay(new LibraryService(scheduledExecutorService), 1, 1, TimeUnit.MILLISECONDS);
     for (; ; ) {
       if (scheduledExecutorService.isTerminated()) {
         println("已经离开挺老远了,人家下班了~");
